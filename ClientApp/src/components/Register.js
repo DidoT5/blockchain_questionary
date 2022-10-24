@@ -10,10 +10,10 @@ export class Register extends Component {
 
     onCreateUser = () => {
         let userInfo = {
-            name: this.refs.nombre.value,
-            lastName: this.refs.apellido.value,
+            nombre: this.refs.nombre.value,
+            apellido: this.refs.apellido.value,
             email: this.refs.email.value,
-            password: this.refs.contra.value
+            contra: this.refs.contra.value
 
         };
 
@@ -62,7 +62,7 @@ export class Register extends Component {
                             <input type={"password"} className="form-control" placeholder='Escriba su contraseña' ref='contra' name='contraseña' />
 
                         </div>
-                        <button type='submit' onClick={this.OnCreateUser} className='btn btn-outline-primary'>Enviar</button>
+                        <button type='submit' onClick={this.onCreateUser} className='btn btn-outline-primary'>Enviar</button>
                         <Link type='submit' className='btn btn-outline-danger mx-2' to="/">Cancelar</Link>
                     </div>
                 </div>
