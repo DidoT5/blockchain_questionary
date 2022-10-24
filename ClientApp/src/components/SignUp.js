@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from "axios";
 
 
@@ -9,9 +9,9 @@ export class SignUp extends Component {
     onLoginUser = () => {
         let userInfo = {
             email: this.refs.email.value,
-            name: "",
-            lastname: "",
-            password: this.refs.password.value
+            nombre: "",
+            apellido: "",
+            contra: this.refs.password.value
         };
         axios({
             method: 'post',
@@ -45,7 +45,7 @@ export class SignUp extends Component {
                   <input type={"password"} className="form-control" placeholder='Escriba su contraseña' name='contraseña' ref='password'/>
             
               </div>
-              <button type='submit' className='btn btn-outline-primary'>Enviar</button>
+                      <button type='submit' onClick={this.onLoginUser} className='btn btn-outline-primary'>Enviar</button>
               <Link type='submit' className='btn btn-outline-danger mx-2' to="/">Cancelar</Link>
               </div>
             </div>
