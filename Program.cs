@@ -45,22 +45,11 @@ app.UseStaticFiles();
 app.UseAuthentication();
 app.UseRouting();
 app.UseCors("MyPolicy");
-
-<<<<<<< Updated upstream
-=======
-
-
->>>>>>> Stashed changes
 app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 });
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-
 
 app.MapControllerRoute(
     name: "default",
