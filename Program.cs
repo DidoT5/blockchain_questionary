@@ -20,7 +20,7 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy(name: "MyPolicy",
                 policy => {
-                    policy.WithOrigins("https://localhost:7135", "https://localhost:44416")
+                    policy.WithOrigins("https://localhost:7195", "https://localhost:44446")
                     .WithMethods("POST", "PUT", "DELETE", "GET")
                     .AllowAnyHeader()
                     .AllowAnyOrigin()
@@ -42,7 +42,16 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
+app.UseAuthentication();
 app.UseRouting();
+app.UseCors("MyPolicy");
+
+app.UseAuthorization();
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
+
 
 
 app.MapControllerRoute(
