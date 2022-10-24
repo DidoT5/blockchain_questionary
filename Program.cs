@@ -1,6 +1,33 @@
+using blockchain_questionary.Entities;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+
+builder.Services.AddDbContext<questionarydbContext>(
+    dbContextOptions => dbContextOptions
+        .UseMySql("server=localhost;port=3306;user=root;password=root;database=questionarydb", ServerVersion.AutoDetect("server=localhost;port=3306;user=root;password=root;database=questionarydb"))
+        // The following three options help with debugging, but should
+        // be changed or removed for production.
+        .LogTo(Console.WriteLine, LogLevel.Information)
+        .EnableSensitiveDataLogging()
+        .EnableDetailedErrors()
+);
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "MyPolicy",
+                policy => {
+                    policy.WithOrigins("https://localhost:7135", "https://localhost:44416")
+                    .WithMethods("POST", "PUT", "DELETE", "GET")
+                    .AllowAnyHeader()
+                    .AllowAnyOrigin()
+                    .AllowAnyMethod();
+                });
+});
+
 
 builder.Services.AddControllersWithViews();
 
