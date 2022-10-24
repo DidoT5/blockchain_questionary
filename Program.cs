@@ -8,7 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<questionarydbContext>(
     dbContextOptions => dbContextOptions
-        .UseMySql("server=localhost;port=3306;user=root;password=root;database=questionarydb", ServerVersion.AutoDetect("server=localhost;port=3306;user=root;password=root;database=questionarydb"))
+        .UseMySql("server=localhost;port=3306;user=root;password=Betis1986-;database=questionarydb", ServerVersion.AutoDetect("server=localhost;port=3306;user=root;password=Betis1986-;database=questionarydb"))
         // The following three options help with debugging, but should
         // be changed or removed for production.
         .LogTo(Console.WriteLine, LogLevel.Information)
@@ -46,12 +46,20 @@ app.UseAuthentication();
 app.UseRouting();
 app.UseCors("MyPolicy");
 
+<<<<<<< Updated upstream
+=======
+
+
+>>>>>>> Stashed changes
 app.UseAuthorization();
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllers();
 });
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 
 app.MapControllerRoute(

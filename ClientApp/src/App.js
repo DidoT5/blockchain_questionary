@@ -1,22 +1,27 @@
 import React, { Component } from 'react';
-import { Route, Routes } from 'react-router-dom';
-import AppRoutes from './AppRoutes';
-import { Layout } from './components/Layout';
+import Register from './components/Register';
+import SignUp from './components/SignUp';
 import './custom.css';
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import Navbar from './components/Navbar';
+import { BrowserRouter as Router,Routes, Route } from 'react-router-dom';
+import AppRoutes from './AppRoutes'
+
 
 export default class App extends Component {
-  static displayName = App.name;
 
   render() {
     return (
-      <Layout>
-        <Routes>
+      <div className='App'>
+      
+      <Navbar/>
+      <Routes>
           {AppRoutes.map((route, index) => {
             const { element, ...rest } = route;
             return <Route key={index} {...rest} element={element} />;
           })}
         </Routes>
-      </Layout>
+      </div>
     );
   }
 }
