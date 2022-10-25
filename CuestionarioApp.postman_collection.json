@@ -1,0 +1,138 @@
+{
+	"info": {
+		"_postman_id": "89203c69-bc64-43d3-b608-0100d6e2df75",
+		"name": "CuestionarioApp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23637076"
+	},
+	"item": [
+		{
+			"name": "CheckGetUsers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/GetUsers",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"GetUsers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckRegistroUserCorrectamente",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"doblev@gmail.com\",\r\n    \"nombre\":\"victor\",\r\n    \"apellido\":\"rosario\",\r\n    \"contra\":\"hola\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/InsertUser",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"InsertUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckLoginUserInDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"doblev@gmail.com\",\r\n    \"nombre\":\"victor\",\r\n    \"apellido\":\"rosario\",\r\n    \"contra\":\"hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/LoginUser",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"LoginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckLoginFailUserNotInDatabase",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"doblev2@gmail.com\",\r\n    \"nombre\":\"victor\",\r\n    \"apellido\":\"rosario\",\r\n    \"contra\":\"hola\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7195/api/LoginUser",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"LoginUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CheckGetQuestions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7195/api/question/GetQuestions",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7195",
+					"path": [
+						"api",
+						"question",
+						"GetQuestions"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
