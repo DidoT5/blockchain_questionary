@@ -18,7 +18,7 @@ export class Questionary extends Component
             url: 'https://localhost:7195/api/question/GetQuestions'
         })
             .then(({ data }) => {
-                this.setState.questions = data;
+                this.setState({ questions: data})
             })
             .catch(error => console.error(error))
     }
@@ -36,7 +36,7 @@ export class Questionary extends Component
             <div>
                 {this.state.questions.length === 0 ?
                     <p>Loading...</p> :
-                    <p>Preguntas: {this.state.questions[0]}</p>
+                    <p>Preguntas: {this.state.questions[0].quest}</p>
                 }
             </div>)
     }
