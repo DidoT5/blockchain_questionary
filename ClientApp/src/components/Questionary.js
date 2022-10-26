@@ -82,9 +82,9 @@ export class Questionary extends Component
         }
 
         const selectValuesForMulti = () => {
-            let lista = Options
+            const lista = Options;
             if (this.state.answer[id]) {
-                lista = Options.filter(x => this.state.answer[id].some(item => item === Object.keys(x)[0]));
+                lista = Options.filter(x => this.state.answer[id].some(item => item === Object.values(x)[0]));
             }
             return lista;
         }
@@ -121,11 +121,11 @@ export class Questionary extends Component
                                     return (
                                         <div onChange={() => toggleTravel()} className="form-group border-bottom align-items-center flex-wrap">
                                             <label className="option my-sm-0 my-2" >
-                                                <input value="true" ref="true" type="radio" name="radioChoice"  />True
+                                                <input value="true" ref="true" type="radio" name="radioChoice" checked={this.state.answer[id] } />True
                                                 <span className="checkmark m-3"></span>
                                             </label>
                                             <label className="option my-sm-0 my-2">
-                                                <input value="false" ref="false" type="radio" name="radioChoice" />False
+                                                <input value="false" ref="false" type="radio" name="radioChoice" checked={!this.state.answer[id]} />False
                                                 <span className="checkmark m-3"></span>
                                             </label>
                                         </div>
