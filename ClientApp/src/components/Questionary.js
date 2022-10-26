@@ -5,10 +5,11 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import Select from 'react-select';
 import makeAnimated from 'react-select/animated';
+import { List } from '../../../node_modules/@mui/material/index';
 
 const animatedComponents = makeAnimated();
 
-const Countries = [
+const Options = [
     { label: "Empresario", value: 1 },
     { label: "Desarrollador", value: 2 },
     { label: "QA", value: 3 },
@@ -73,17 +74,20 @@ export class Questionary extends Component
             }
         }
 
-        const onSelectValues = (value) => {
-            const newAnswer = { ...this.state.answer, id: value };
-            this.setState({ answer: newAnswer });
-        };
-        const onRemove = (selectedList, removedItem) => {
-            let listaFiltrada = this.state.answer[id].filter(x => x == removedItem);
+        const handleChange = (e) => {
+            let value = e.map(quer => quer.label);
             const newAnswer = this.state.answer;
-            newAnswer[id] = listaFiltrada;
-            this.setState({ newAnswer });
+            newAnswer[id] = value;
+            this.setState({ answer: newAnswer });
         }
 
+        const selectValuesForMulti = () => {
+            let lista = Options
+            if (this.state.answer[id]) {
+                lista = Options.filter(x => this.state.answer[id].some(item => item === Object.keys(x)[0]));
+            }
+            return lista;
+        }
 
         const toggleTravel = () => {
             if (this.refs.true.checked) {
@@ -133,12 +137,11 @@ export class Questionary extends Component
                                     )
                                 default:
                                     return (
-                                        <Select options={Countries}
+                                        <Select options={Options}
                                             components={animatedComponents}
-                                            onSelect={(value) => onSelectValues(value)}
+                                            onChange={handleChange}
                                             isSearchable={true}
-                                            onRemove={onRemove}
-                                            value={this.state.answer[id] }
+                                            values={selectValuesForMulti}
                                             isMulti />
                                     )
                             }
