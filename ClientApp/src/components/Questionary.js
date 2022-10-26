@@ -101,7 +101,7 @@ export class Questionary extends Component
         }
 
         return (
-            <div>
+            <div className="text-center ">
                 {lon === 0 ?
                     <p>Loading...</p> :
                     <>
@@ -111,14 +111,14 @@ export class Questionary extends Component
                                 switch (this.state.questions[this.state.currentPage].tipo) {
                                 case 1:
                                     return (
-                                        <div onChange={() => toggleTravel()} className="form-group border-bottom d-flex align-items-center justify-content-between flex-wrap">
+                                        <div onChange={() => toggleTravel()} className="form-group border-bottom align-items-center flex-wrap">
                                             <label className="option my-sm-0 my-2">
                                                 <input value="true" ref="true" type="radio" name="true" />True
-                                                <span className="checkmark"></span>
+                                                <span className="checkmark m-3"></span>
                                             </label>
                                             <label className="option my-sm-0 my-2">
                                                 <input value="false" ref="false" type="radio" name="false" checked />False
-                                                <span className="checkmark"></span>
+                                                <span className="checkmark m-3"></span>
                                             </label>
                                         </div>
                                     )
@@ -139,8 +139,8 @@ export class Questionary extends Component
                                     )
                             }
                             })()}
-                            <button type="submit" className="btn btn-success" onClick={() => previousQuestion()}>Previous Question <span className="glyphicon glyphicon-send"></span></button>
-                            <button type="submit" className="btn btn-success" onClick={() => nextQuestion()}>Next Question <span className="glyphicon glyphicon-send"></span></button>
+                            <button type="submit" className="btn btn-success  m-3 " onClick={() => previousQuestion()}>Previous Question <span className="glyphicon glyphicon-send"></span></button>
+                            <button type="submit" className="btn btn-success  m-3" onClick={() => nextQuestion()}>Next Question <span className="glyphicon glyphicon-send"></span></button>
                     </div>
                     </>
                 }

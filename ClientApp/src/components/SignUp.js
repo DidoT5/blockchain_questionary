@@ -23,7 +23,8 @@ export class SignUp extends Component {
                 console.log(data.email);
                 localStorage.setItem("email", data.email);
             })
-            .catch(error => console.error('timeout exceeded'))
+            .catch(error => console.error('timeout exceeded'));
+        window.location = "/questionary";
     }
 
       render(){
