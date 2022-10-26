@@ -31,6 +31,7 @@ namespace blockchain_questionary.Controllers
             var List = await questionarydbContext.Questions.Select(
                 s => new Question
                 {
+                    Id = s.Id,
                     Quest = s.Quest,
                     Tipo = s.Tipo
                 }

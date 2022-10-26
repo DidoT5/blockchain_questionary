@@ -50,24 +50,24 @@ export class Questionary extends Component
         }
 
         const lon = this.state.questions.length;
-        let question = {}
+        let question = "";
         let id = 0;
 
         if (lon !== 0 ) {
             question = this.state.questions[this.state.currentPage].quest;
-            id = question.id;
+            id = this.state.questions[this.state.currentPage].id;
         }
 
         const nextQuestion = () => {
             if (this.state.currentPage === lon-1) {
-                this.setState({ currentPage: 0 })
+                this.setState({ currentPage: 0 });
             } else {
                 this.setState({ currentPage: this.state.currentPage + 1 });
             }
         }
         const previousQuestion = () => {
             if (this.state.currentPage === 0) {
-                this.setState({ currentPage: lon-1 })
+                this.setState({ currentPage: lon - 1 });
             } else {
                 this.setState({ currentPage: this.state.currentPage - 1 });
             }
@@ -86,18 +86,22 @@ export class Questionary extends Component
 
 
         const toggleTravel = () => {
-            if (this.refs.true.value) {
-                this.setState({ ...this.state.answers, id: false });
+            if (this.refs.true.checked) {
+                const newAnswer = this.state.answer;
+                newAnswer[id] = true;
+                this.setState({ answer: newAnswer });
             } else {
-                this.setState({ ...this.state.answers, id: true });
+                const newAnswer = this.state.answer;
+                newAnswer[id] = false;
+                this.setState({ answer: newAnswer });
             }
         }
 
         const cambiaNumero = () => {
             //this.setState({ ...this.state.answers, id: this.refs.answer.value });
             const newAnswer = this.state.answer;
-            newAnswer[id] = this.refs.answer.value
-            this.setState(newAnswer);
+            newAnswer[id] = this.refs.answer.value;
+            this.setState({ answer: newAnswer });
         }
 
         return (
@@ -112,12 +116,12 @@ export class Questionary extends Component
                                 case 1:
                                     return (
                                         <div onChange={() => toggleTravel()} className="form-group border-bottom align-items-center flex-wrap">
-                                            <label className="option my-sm-0 my-2">
-                                                <input value="true" ref="true" type="radio" name="true" />True
+                                            <label className="option my-sm-0 my-2" >
+                                                <input value="true" ref="true" type="radio" name="radioChoice"  />True
                                                 <span className="checkmark m-3"></span>
                                             </label>
                                             <label className="option my-sm-0 my-2">
-                                                <input value="false" ref="false" type="radio" name="false" checked />False
+                                                <input value="false" ref="false" type="radio" name="radioChoice" />False
                                                 <span className="checkmark m-3"></span>
                                             </label>
                                         </div>
